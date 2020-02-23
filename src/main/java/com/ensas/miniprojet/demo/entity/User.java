@@ -4,23 +4,24 @@ package com.ensas.miniprojet.demo.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
-//@Entity
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+
 @MappedSuperclass
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
     private String prenom;
     private String email;
+
     @Embedded
     private Identification identification;
 
     public User(){
 
     }
+
     public User(Long id,String nom,String prenom,String email) {
         this.id=id;
         this.nom=nom;

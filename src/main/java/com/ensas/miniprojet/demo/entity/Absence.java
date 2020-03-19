@@ -1,6 +1,8 @@
 package com.ensas.miniprojet.demo.entity;
 
 import com.ensas.miniprojet.demo.entity.user.student.Student;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -12,10 +14,12 @@ public class Absence {
     private Long id;
     private Integer numberOfAbsence;
 
-    @OneToOne
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Student student;
 
-    @OneToOne
+    @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Module module;
 
 

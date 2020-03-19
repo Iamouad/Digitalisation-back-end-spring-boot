@@ -4,6 +4,8 @@ package com.ensas.miniprojet.demo.entity;
 import com.ensas.miniprojet.demo.entity.user.prof.Prof;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,12 +17,12 @@ public class Module {
     private Long id;
     private String nom;
 
-    @ManyToMany
+    @ManyToMany()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Classe> classes;
 
-    @ManyToOne
+    @ManyToOne(cascade = {})
     private Prof prof;
-
 
     public Long getId() {
         return id;

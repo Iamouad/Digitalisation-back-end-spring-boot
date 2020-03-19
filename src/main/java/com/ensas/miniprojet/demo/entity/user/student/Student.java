@@ -23,5 +23,12 @@ public class Student extends User implements Serializable {
         this.cne = cne;
     }
 
+    @Override
+    public String toString() {
 
+        return "Student{" +
+                "cne='" + cne + '\'' +
+                ", classe=" + classe +
+                '}' +  super.toString();
+    }
 }

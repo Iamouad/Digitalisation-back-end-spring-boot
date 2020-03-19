@@ -2,6 +2,8 @@ package com.ensas.miniprojet.demo.entity;
 
 import com.ensas.miniprojet.demo.entity.user.prof.Prof;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,10 +15,11 @@ public class Departement {
     private Long id;
     private String nom;
 
-    @OneToMany(mappedBy = "departement")
+    @OneToMany(mappedBy = "departement", cascade = {CascadeType.REMOVE})
     List<Filiere> filieres;
 
     @OneToMany(mappedBy = "departement")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     List<Prof> profs;
 
 

@@ -1,6 +1,8 @@
 package com.ensas.miniprojet.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,6 +18,7 @@ public class User implements Serializable {
     private String email;
 
     @Embedded
+    @JsonIgnore
     private Identification identification;
 
     public User(){
@@ -28,6 +31,18 @@ public class User implements Serializable {
         this.prenom=prenom;
         this.email=email;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", identification=" + identification +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
@@ -60,9 +75,9 @@ public class User implements Serializable {
         this.email = email;
     }
 
-//    public Identification getIdentification() {
-//        return identification;
-//    }
+    public Identification getIdentification() {
+        return identification;
+    }
 //
 //    public void setIdentification(Identification identification) {
 //        this.identification = identification;

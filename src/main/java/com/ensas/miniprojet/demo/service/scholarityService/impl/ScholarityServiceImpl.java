@@ -26,21 +26,7 @@ public class ScholarityServiceImpl implements ScholarityService {
 
     @Autowired
     CertifRepository certifRepository;
-
-    @Override
-    @Transactional
-    public List<Classe> getClasses() {
-        List<Classe> classes = classeRepository.findAll();
-        return classes;
-    }
-
-    @Override
-    @Transactional
-    public Classe getClasse(Long classeId) {
-        Classe classe = classeRepository.findById(classeId).get();
-        return classe;
-    }
-
+    
     @Override
     @Transactional
     public List<Student> getStudentOfClasse(Long classeID) {

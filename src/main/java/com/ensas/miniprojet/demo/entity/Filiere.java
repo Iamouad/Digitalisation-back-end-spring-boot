@@ -3,6 +3,8 @@ package com.ensas.miniprojet.demo.entity;
 
 import com.ensas.miniprojet.demo.entity.user.prof.Prof;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,10 +18,11 @@ public class Filiere {
     private String nom;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Departement departement;
 
 
-    @OneToMany(mappedBy = "filiere")
+    @OneToMany(mappedBy = "filiere", cascade = {CascadeType.REMOVE})
     List<Classe> classes;
 
     public Long getId() {
@@ -38,7 +41,7 @@ public class Filiere {
         this.nom = nom;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public Departement getDepartement() {
         return departement;
     }

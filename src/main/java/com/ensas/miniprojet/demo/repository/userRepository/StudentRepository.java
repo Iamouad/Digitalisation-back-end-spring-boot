@@ -10,21 +10,9 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
-//    /**
-//     * this fucntion is for finding an existing Prof by their identification.
-//     *
-//     * @param identification
-//     * @return Student
-//     */
-//    Student findByIdentification(Identification identification);
-//
-//    /**
-//     * this fucntion is for finding an existing Prof by their email address.
-//     *
-//     * @param email
-//     * @return Prof
-//     */
-//    Student findByEmail(String email);
+
+
+    Student findByEmail(String email);
 
     List<Student> findByClasse_Id(Long classeId);
 }

@@ -1,6 +1,7 @@
 package com.ensas.miniprojet.demo.model;
 
 public enum TypeCertificat {
+
     scholarity("scholarity"),
     success("success");
 
@@ -14,4 +15,3 @@ public enum TypeCertificat {
         return typeCertificat;
     }
 }
-

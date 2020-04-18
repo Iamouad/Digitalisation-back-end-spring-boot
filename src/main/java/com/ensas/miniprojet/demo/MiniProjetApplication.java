@@ -25,6 +25,7 @@ public class MiniProjetApplication {
 		scolarityAgent.setIdentification(identification);
 		scolarityAgent.setPrenom("scholarity");
 
+		scholarityAgentRepository.save(scolarityAgent);
 		System.out.println("seeding");
 	}
 

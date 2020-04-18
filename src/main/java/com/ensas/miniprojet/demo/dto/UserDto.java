@@ -1,8 +1,8 @@
 package com.ensas.miniprojet.demo.dto;
 
 import com.ensas.miniprojet.demo.entity.User;
-import com.ensas.miniprojet.demo.entity.user.scolartyAgent.ScolarityAgent;
-import com.ensas.miniprojet.demo.entity.user.student.Student;
+import com.ensas.miniprojet.demo.entity.ScolarityAgent;
+import com.ensas.miniprojet.demo.entity.Student;
 import com.ensas.miniprojet.demo.model.auth.Authority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,6 @@
 package com.ensas.miniprojet.demo.repository.userRepository;
 
-import com.ensas.miniprojet.demo.entity.user.scolartyAgent.ScolarityAgent;
+import com.ensas.miniprojet.demo.entity.ScolarityAgent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

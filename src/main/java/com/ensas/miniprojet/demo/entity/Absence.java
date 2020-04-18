@@ -1,6 +1,5 @@
 package com.ensas.miniprojet.demo.entity;
 
-import com.ensas.miniprojet.demo.entity.user.student.Student;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 

@@ -2,8 +2,7 @@ package com.ensas.miniprojet.demo.service.studentService;
 
 
 import com.ensas.miniprojet.demo.entity.CertifRequest;
-import com.ensas.miniprojet.demo.entity.user.prof.Prof;
-import com.ensas.miniprojet.demo.entity.user.student.Student;
+import com.ensas.miniprojet.demo.entity.Student;
 
 import java.util.List;
 

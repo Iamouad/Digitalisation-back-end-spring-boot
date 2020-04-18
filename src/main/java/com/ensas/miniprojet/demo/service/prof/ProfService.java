@@ -1,7 +1,6 @@
 package com.ensas.miniprojet.demo.service.prof;
 
-import com.ensas.miniprojet.demo.entity.Filiere;
-import com.ensas.miniprojet.demo.entity.user.prof.Prof;
+import com.ensas.miniprojet.demo.entity.Prof;
 
 import java.util.List;
 

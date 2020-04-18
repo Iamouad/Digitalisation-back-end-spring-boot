@@ -1,9 +1,7 @@
 package com.ensas.miniprojet.demo.entity;
 
 
-import com.ensas.miniprojet.demo.entity.user.prof.Prof;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 

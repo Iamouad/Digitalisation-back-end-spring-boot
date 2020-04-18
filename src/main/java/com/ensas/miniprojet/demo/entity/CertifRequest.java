@@ -1,7 +1,6 @@
 package com.ensas.miniprojet.demo.entity;
 
 
-import com.ensas.miniprojet.demo.entity.user.student.Student;
 import com.ensas.miniprojet.demo.model.TypeCertificat;
 
 import javax.persistence.*;
@@ -36,7 +35,8 @@ public class CertifRequest {
     }
 
     public void setDateDeDemande(Date dateDeDemande) {
-        this.dateDeDemande = dateDeDemande;
+        if(dateDeDemande != null)
+        {this.dateDeDemande = dateDeDemande;}
     }
 
     public void setId(Long id) {
@@ -48,7 +48,8 @@ public class CertifRequest {
     }
 
     public void setTypeCertificat(TypeCertificat typeCertificat) {
-        this.typeCertificat = typeCertificat;
+        if(typeCertificat != null)
+            {this.typeCertificat = typeCertificat;}
     }
 
     public Student getStudent() {
@@ -56,7 +57,8 @@ public class CertifRequest {
     }
 
     public void setStudent(Student student) {
-        this.student = student;
+        if(student != null)
+           { this.student = student;}
     }
 
     @Override

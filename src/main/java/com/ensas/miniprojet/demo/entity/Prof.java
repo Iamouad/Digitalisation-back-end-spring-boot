@@ -1,4 +1,4 @@
-package com.ensas.miniprojet.demo.entity.user.prof;
+package com.ensas.miniprojet.demo.entity;
 
 import com.ensas.miniprojet.demo.entity.Departement;
 import com.ensas.miniprojet.demo.entity.Module;

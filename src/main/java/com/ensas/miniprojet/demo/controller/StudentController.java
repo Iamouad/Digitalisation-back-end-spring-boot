@@ -1,5 +1,4 @@
 package com.ensas.miniprojet.demo.controller;
-
 import com.ensas.miniprojet.demo.entity.CertifRequest;
 import com.ensas.miniprojet.demo.service.studentService.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +21,4 @@ public class StudentController {
         System.out.println(certifRequest1);
         return "200";
     }
-
 }

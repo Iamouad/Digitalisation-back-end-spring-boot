@@ -1,8 +1,6 @@
 package com.ensas.miniprojet.demo.service.prof.impl;
 
-import com.ensas.miniprojet.demo.entity.Filiere;
-import com.ensas.miniprojet.demo.entity.user.prof.Prof;
-import com.ensas.miniprojet.demo.repository.filiereRepository.FiliereRepository;
+import com.ensas.miniprojet.demo.entity.Prof;
 import com.ensas.miniprojet.demo.repository.userRepository.ProfRepository;
 import com.ensas.miniprojet.demo.service.prof.ProfService;
 import org.springframework.beans.factory.annotation.Autowired;

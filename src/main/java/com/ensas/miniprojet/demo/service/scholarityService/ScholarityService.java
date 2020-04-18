@@ -1,7 +1,7 @@
 package com.ensas.miniprojet.demo.service.scholarityService;
 
 import com.ensas.miniprojet.demo.entity.*;
-import com.ensas.miniprojet.demo.entity.user.student.Student;
+import com.ensas.miniprojet.demo.entity.Student;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 

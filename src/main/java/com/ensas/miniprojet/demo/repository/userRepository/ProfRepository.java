@@ -1,7 +1,7 @@
 package com.ensas.miniprojet.demo.repository.userRepository;
 
 import com.ensas.miniprojet.demo.entity.Identification;
-import com.ensas.miniprojet.demo.entity.user.prof.Prof;
+import com.ensas.miniprojet.demo.entity.Prof;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

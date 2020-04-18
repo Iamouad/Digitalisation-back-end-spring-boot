@@ -1,7 +1,7 @@
 package com.ensas.miniprojet.demo.service.studentService.impl;
 
 import com.ensas.miniprojet.demo.entity.CertifRequest;
-import com.ensas.miniprojet.demo.entity.user.student.Student;
+import com.ensas.miniprojet.demo.entity.Student;
 import com.ensas.miniprojet.demo.repository.entityRepository.CertifRepository;
 import com.ensas.miniprojet.demo.repository.userRepository.StudentRepository;
 import com.ensas.miniprojet.demo.service.studentService.StudentService;

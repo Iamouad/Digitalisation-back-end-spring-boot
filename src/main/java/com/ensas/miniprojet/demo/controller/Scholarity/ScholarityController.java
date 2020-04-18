@@ -1,8 +1,7 @@
 package com.ensas.miniprojet.demo.controller.Scholarity;
 import com.ensas.miniprojet.demo.entity.*;
-import com.ensas.miniprojet.demo.entity.user.prof.Prof;
-import com.ensas.miniprojet.demo.entity.user.student.Student;
-import com.ensas.miniprojet.demo.repository.departementRepository.DepartementRepository;
+import com.ensas.miniprojet.demo.entity.Prof;
+import com.ensas.miniprojet.demo.entity.Student;
 import com.ensas.miniprojet.demo.service.CertifRequest.CertifRequestService;
 import com.ensas.miniprojet.demo.service.classe.ClasseService;
 import com.ensas.miniprojet.demo.service.departement.DepartementService;
@@ -11,29 +10,9 @@ import com.ensas.miniprojet.demo.service.module.ModuleService;
 import com.ensas.miniprojet.demo.service.prof.ProfService;
 import com.ensas.miniprojet.demo.service.scholarityService.ScholarityService;
 import com.ensas.miniprojet.demo.service.studentService.StudentService;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -226,8 +205,7 @@ public class ScholarityController {
     CertifRequest updateCertifRequest(@RequestBody CertifRequest certifRequest){
         return certifRequestService.updateCertifRequest(certifRequest);
     }
-
-
+    
 //    @RequestMapping(path="/downloadFile",method=RequestMethod.GET)
 ////    @Consumes(MediaType.APPLICATION_JSON_VALUE)
 //    public  ResponseEntity<ByteArrayResource> downloadDocument(

@@ -1,4 +1,4 @@
-package com.ensas.miniprojet.demo.entity.user.student;
+package com.ensas.miniprojet.demo.entity;
 
 import com.ensas.miniprojet.demo.entity.Classe;
 import com.ensas.miniprojet.demo.entity.User;

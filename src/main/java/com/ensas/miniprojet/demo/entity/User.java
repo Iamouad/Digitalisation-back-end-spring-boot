@@ -32,6 +32,10 @@ public class User implements Serializable {
         this.email=email;
     }
 
+    public void setIdentification(Identification identification) {
+        this.identification = identification;
+    }
+
     @Override
     public String toString() {
         return "User{" +

@@ -53,4 +53,14 @@ public class Absence {
     public void setModule(Module module) {
         this.module = module;
     }
+
+    @Override
+    public String toString() {
+        return "Absence{" +
+                "id=" + id +
+                ", numberOfAbsence=" + numberOfAbsence +
+                ", student=" + student +
+                ", module=" + module +
+                '}';
+    }
 }

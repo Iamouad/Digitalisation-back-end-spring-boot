@@ -46,4 +46,13 @@ public class Prof  extends User implements Serializable {
     public void setModules(List<Module> modules) {
         this.modules = modules;
     }
+
+    @Override
+    public String toString() {
+        return "Prof{" +
+                "matricule='" + matricule + '\'' +
+                ", departement=" + departement +
+                ", modules=" + modules +
+                "} " + super.toString();
+    }
 }

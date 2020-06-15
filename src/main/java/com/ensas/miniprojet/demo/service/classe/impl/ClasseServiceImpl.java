@@ -14,38 +14,37 @@ import java.util.List;
 @Service
 public class ClasseServiceImpl implements ClasseService {
     @Autowired
-    ClasseRepository departmentRepository;
-
-
-
+    ClasseRepository classeRepository;
 
     @Override
     @Transactional
     public List<Classe> getClasses() {
-        return departmentRepository.findAll();
+        return classeRepository.findAll();
     }
 
     @Override
     @Transactional
     public Classe getClasse(Long departmentId) {
-        return departmentRepository.findById(departmentId).get();
+        return classeRepository.findById(departmentId).get();
     }
 
     @Override
     @Transactional
     public Classe addClassee(Classe department) {
-        return departmentRepository.save(department);
+        System.out.println("add classe " + department);
+        return classeRepository.save(department);
     }
 
     @Override
     @Transactional
     public void delClasse(Long departmentId) {
-        departmentRepository.deleteById(departmentId);
+        classeRepository.deleteById(departmentId);
     }
 
     @Override
     @Transactional
     public Classe updateClasse(Classe department) {
-        return departmentRepository.save(department);
+        System.out.println("update classe : " + department);
+        return classeRepository.save(department);
     }
 }

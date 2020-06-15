@@ -18,7 +18,7 @@ public class Classe {
     @ManyToOne
     private Filiere filiere;
 
-    @ManyToMany(mappedBy = "classes")
+    @ManyToMany()
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Module> modules;
 
@@ -70,6 +70,7 @@ public class Classe {
         return "Classe{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
+                ", modules=" + modules +
                 '}';
     }
 

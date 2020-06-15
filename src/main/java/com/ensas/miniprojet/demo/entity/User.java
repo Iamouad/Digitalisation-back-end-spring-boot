@@ -17,7 +17,20 @@ public class User implements Serializable {
     private String prenom;
     private String email;
 
-    @Embedded
+    @Column(columnDefinition = "true")
+    private Boolean confirmed;
+
+
+
+    public Boolean getConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+
     @JsonIgnore
     private Identification identification;
 

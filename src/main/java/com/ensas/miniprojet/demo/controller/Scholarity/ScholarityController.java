@@ -100,7 +100,7 @@ public class ScholarityController {
     }
     @PostMapping("/profs")
     Prof addProf(@RequestBody Prof prof){
-        return profService.updateProf(prof);
+        return profService.addProf(prof);
     }
     @DeleteMapping("/profs/{profId}")
     void delProf(@PathVariable Long profId){
@@ -141,6 +141,7 @@ public class ScholarityController {
         List<Classe> classes = classeService.getClasses();
         return classes;
     }
+     
     @GetMapping("/classes/{classeId}")
     Classe getClasse(@PathVariable Long classeId){
         return classeService.getClasse(classeId);
@@ -148,9 +149,9 @@ public class ScholarityController {
 
     @GetMapping("/classes/{classeId}/students")
     List<Student> getStudentOfClasse(@PathVariable Long classeId){
-
         return scholarityService.getStudentOfClasse(classeId);
     }
+
     @PostMapping("/classes")
     Classe addClasse(@RequestBody Classe classe){
         return classeService.updateClasse(classe);
@@ -172,7 +173,7 @@ public class ScholarityController {
     @PostMapping("/students")
     Student addStudent(@RequestBody Student student){
 
-        return studentService.updateStudent(student);
+        return studentService.addStudent(student);
     }
     @DeleteMapping("/students/{studentId}")
     void delStudent(@PathVariable Long studentId){

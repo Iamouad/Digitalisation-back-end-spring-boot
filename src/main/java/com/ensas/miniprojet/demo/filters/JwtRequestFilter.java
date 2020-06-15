@@ -26,37 +26,45 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-        final String authorizationHeader = request.getHeader("Authorization");
 
-        System.out.println("in the filter");
 
-        String jwt = null;
-        String username = null;
 
-        //extract data from the token
-        if(authorizationHeader !=null && authorizationHeader.startsWith("Bearer ")){
-            jwt = authorizationHeader.substring(7);
-            System.out.println("JWT : #" + jwt + "#");
-            username = jwtUtil.extractUsername(jwt);
-            System.out.println("in the filter first if : " + username + " jwt : " + jwt);
-        }
+        if(!request.getRequestURI().equals("/authenticate"))
+        {
+            final String authorizationHeader = request.getHeader("Authorization");
 
-        //lead the userName from the db using the userDetailsService
-        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            System.out.println("in the filter seconde if");
+            System.out.println("in the filter" + request.getRequestURI());
 
-            UserDetails userDetails = this.myUserDetailsService.loadUserByUsername(username);
-            if(jwtUtil.validateToken(jwt, userDetails)){
-                System.out.println("in the filter third if");
+            String jwt = null;
+            String username = null;
 
-                System.out.println("filter : " + userDetails);
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
-                usernamePasswordAuthenticationToken
-                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            //extract data from the token
+            if(authorizationHeader !=null && authorizationHeader.startsWith("Bearer ")){
+                jwt = authorizationHeader.substring(7);
+                System.out.println("JWT : #" + jwt + "#");
+                username = jwtUtil.extractUsername(jwt);
+                System.out.println("in the filter first if : " + username + " jwt : " + jwt);
+            }
+
+            //lead the userName from the db using the userDetailsService
+            if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
+                System.out.println("in the filter seconde if");
+
+                UserDetails userDetails = this.myUserDetailsService.loadUserByUsername(username);
+                if(jwtUtil.validateToken(jwt, userDetails)){
+                    System.out.println("in the filter third if");
+
+                    System.out.println("filter : " + userDetails);
+                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+                            userDetails, null, userDetails.getAuthorities());
+                    usernamePasswordAuthenticationToken
+                            .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                    request.setAttribute("userName", username);
+                }
             }
         }
+
         filterChain.doFilter(request, httpServletResponse);
     }
 }

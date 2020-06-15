@@ -1,5 +1,6 @@
 package com.ensas.miniprojet.demo.dto;
 
+import com.ensas.miniprojet.demo.entity.Prof;
 import com.ensas.miniprojet.demo.entity.User;
 import com.ensas.miniprojet.demo.entity.ScolarityAgent;
 import com.ensas.miniprojet.demo.entity.Student;
@@ -30,6 +31,8 @@ public class UserDto implements UserDetails {
             authorities.add(new Authority("Student"));
         }else if( user.getClass().equals(ScolarityAgent.class)){
             authorities.add(new Authority("Scholarity"));
+        }else if( user.getClass().equals(Prof.class)){
+            authorities.add(new Authority("Prof"));
         }
         System.out.println("end of constructor");
     }

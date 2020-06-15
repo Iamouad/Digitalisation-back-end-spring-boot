@@ -15,7 +15,7 @@ public class Module {
     private Long id;
     private String nom;
 
-    @ManyToMany()
+    @ManyToMany(mappedBy = "modules")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Classe> classes;
 
@@ -53,5 +53,13 @@ public class Module {
 
     public void setProf(Prof prof) {
         this.prof = prof;
+    }
+
+    @Override
+    public String toString() {
+        return "Module{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.ensas.miniprojet.demo.controller.Scholarity;
 
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,6 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import org.springframework.core.io.Resource;
+import sun.tools.java.ClassPath;
 
 @RestController
 @RequestMapping("/scholarity/files")
@@ -50,15 +52,11 @@ public class FileController {
     @GetMapping("/download/{fileName:.+}")
     public ResponseEntity uploadToLocalFileSystem(@PathVariable String fileName) {
 
-        String filebasePath = "/Users/mac/Desktop/miniProjet/";
-        Path path = Paths.get(filebasePath + fileName);
-        Resource resource = null;
-        try{
-            resource = new UrlResource(path.toUri());
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+
+     //   Path path = Paths.get(filebasePath + fileName);
+        Resource resource = null;
+        resource = new ClassPathResource("image/" + fileName);;
 
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_PNG)

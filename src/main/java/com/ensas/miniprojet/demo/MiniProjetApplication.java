@@ -10,23 +10,29 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
+import java.util.List;
+
 @SpringBootApplication
 public class MiniProjetApplication {
 
 	@Autowired
 	ScholarityAgentRepository scholarityAgentRepository;
 	public void seedInitData(){
-		ScolarityAgent scolarityAgent = new ScolarityAgent();
-		Identification identification = new Identification();
-		identification.setPassword("password");
-		identification.setUsername("scholarity");
-		scolarityAgent.setEmail("scholarity");
-		scolarityAgent.setNom("scholarity");
-		scolarityAgent.setIdentification(identification);
-		scolarityAgent.setPrenom("scholarity");
 
-		scholarityAgentRepository.save(scolarityAgent);
-		System.out.println("seeding");
+		List<ScolarityAgent> agents = scholarityAgentRepository.findAll();
+		if(agents.size() == 0){
+			ScolarityAgent scolarityAgent = new ScolarityAgent();
+			Identification identification = new Identification();
+			identification.setPassword("password");
+			identification.setUsername("scholarity");
+			scolarityAgent.setEmail("scholarity");
+			scolarityAgent.setNom("scholarity");
+			scolarityAgent.setIdentification(identification);
+			scolarityAgent.setPrenom("scholarity");
+
+			scholarityAgentRepository.save(scolarityAgent);
+			System.out.println("seeding");
+		}
 	}
 
 

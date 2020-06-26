@@ -2,6 +2,7 @@ package com.ensas.miniprojet.demo.controller.Scholarity;
 import com.ensas.miniprojet.demo.entity.*;
 import com.ensas.miniprojet.demo.entity.Prof;
 import com.ensas.miniprojet.demo.entity.Student;
+import com.ensas.miniprojet.demo.model.AbsenceModel;
 import com.ensas.miniprojet.demo.service.CertifRequest.CertifRequestService;
 import com.ensas.miniprojet.demo.service.classe.ClasseService;
 import com.ensas.miniprojet.demo.service.departement.DepartementService;
@@ -9,10 +10,24 @@ import com.ensas.miniprojet.demo.service.filiere.FiliereService;
 import com.ensas.miniprojet.demo.service.module.ModuleService;
 import com.ensas.miniprojet.demo.service.prof.ProfService;
 import com.ensas.miniprojet.demo.service.scholarityService.ScholarityService;
+import com.ensas.miniprojet.demo.service.scholarityService.impl.ExportAbsence;
 import com.ensas.miniprojet.demo.service.studentService.StudentService;
+import com.ensas.miniprojet.demo.service.studentService.impl.ImportStudentService;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.poi.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @RestController
@@ -39,10 +54,16 @@ public class ScholarityController {
     ModuleService moduleService;
 
     @Autowired
+    ExportAbsence exportAbsence;
+
+    @Autowired
     DepartementService departementService;
 
     @Autowired
     CertifRequestService certifRequestService;
+
+    @Autowired
+    ImportStudentService importStudentService;
 
     @GetMapping("/modules")
     @CrossOrigin(origins = "http://localhost:3000")
@@ -166,6 +187,7 @@ public class ScholarityController {
     }
 
 
+
     @GetMapping("/students/{studentId}")
     Student getStudent(@PathVariable Long studentId){
         return studentService.getStudent(studentId);
@@ -206,7 +228,45 @@ public class ScholarityController {
     CertifRequest updateCertifRequest(@RequestBody CertifRequest certifRequest){
         return certifRequestService.updateCertifRequest(certifRequest);
     }
-    
+
+
+    @RequestMapping(path = "/classes/absence/{classeId}", method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<String> download(@PathVariable Long classeId) throws IOException {
+
+        ByteArrayInputStream in = exportAbsence.AbsenceToExcel(classeId);
+        // return IOUtils.toByteArray(in);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename=customers.xlsx");
+        headers.add("Content-Type", "application/octet-stream");
+//        headers.add("Cache-Control", "no-cache, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+//        InputStreamResource finput = new InputStreamResource(in);
+//        byte[] imageBytes = new byte[(int)finput.length()];
+//        finput.read(imageBytes, 0, imageBytes.length);
+//        finput.close();
+
+        byte[] bytes = IOUtils.toByteArray(in);
+        String fileStr = Base64.encodeBase64String( bytes);
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(fileStr);
+    }
+
+    @RequestMapping(path = "/students/import", method = RequestMethod.POST)
+    public int uploadFile(MultipartFile file, Long classeID) throws IOException {
+        System.out.println("[INfo] +++++++> " + classeID);
+        InputStream in = file.getInputStream();
+        int nb = importStudentService.ExcelToStudent(in, classeID);
+        return nb;
+    }
+
+
+
 //    @RequestMapping(path="/downloadFile",method=RequestMethod.GET)
 ////    @Consumes(MediaType.APPLICATION_JSON_VALUE)
 //    public  ResponseEntity<ByteArrayResource> downloadDocument(

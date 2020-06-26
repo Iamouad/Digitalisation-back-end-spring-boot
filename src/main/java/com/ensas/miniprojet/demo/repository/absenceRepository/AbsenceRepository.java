@@ -19,8 +19,9 @@ public interface AbsenceRepository extends JpaRepository<Absence, Long> {
     @Query("SELECT a FROM Absence a where a.student.id = :student")
     List<Absence> getStudentAbsences(Long student);
 
-    @Query("SELECT a FROM Absence a where  a.module.id = :module ")
+    @Query("SELECT a FROM Absence a where a.module.id = :module ")
     List<Absence> getModuleAbsences(Long module);
+
 
 
 }

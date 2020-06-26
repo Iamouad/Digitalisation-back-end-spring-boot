@@ -3,12 +3,14 @@ package com.ensas.miniprojet.demo.entity;
 import com.ensas.miniprojet.demo.entity.Classe;
 import com.ensas.miniprojet.demo.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
 public class Student extends User implements Serializable {
 
     private String cne;
@@ -17,8 +19,9 @@ public class Student extends User implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateN;
     private String tel;
-
     private String profilePicture;
+
+
 
     public String getProfilePicture() {
         return profilePicture;

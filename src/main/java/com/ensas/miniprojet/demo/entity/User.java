@@ -2,12 +2,17 @@ package com.ensas.miniprojet.demo.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 
 @MappedSuperclass
+@DynamicUpdate
 public class User implements Serializable {
 
     @Id

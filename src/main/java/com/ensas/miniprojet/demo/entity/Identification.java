@@ -1,9 +1,12 @@
 package com.ensas.miniprojet.demo.entity;
 
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
+@DynamicUpdate
 public class Identification {
     private String username;
     private String password;

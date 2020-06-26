@@ -16,7 +16,7 @@ public class CertifRequest {
     private boolean isReady = false;
 
 
-    @OneToOne
+    @ManyToOne
     private Student student;
     public Long getId() {
         return id;

@@ -41,8 +41,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student addStudent(Student student) {
-        student.setIdentification(new Identification(student.getEmail(),student.getEmail()));
-        return studentRepository.save(student);
+        Student std = studentRepository.findByEmail(student.getEmail());
+        if(std == null){
+            student.setIdentification(new Identification(student.getEmail(),student.getEmail()));
+            return studentRepository.save(student);
+        }
+        return null;
     }
 
     @Override

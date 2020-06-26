@@ -73,9 +73,15 @@ public class ProfServiceImpl implements ProfService {
     }
 
     @Override
-    public Prof updateProf(Prof prof) {
+    public Prof updateProf(Prof prof)
+    {
+        Prof newprof = getProf(prof.getId());
+        if(newprof != null){
+            newprof.setIdentification(prof.getIdentification());
+        }
         return profRepository.save(prof);
     }
+
 
     @Override
     @Transactional

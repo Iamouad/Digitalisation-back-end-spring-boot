@@ -10,6 +10,7 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
 
+
     Student findByEmail(String email);
 
     List<Student> findByClasse_Id(Long classeId);

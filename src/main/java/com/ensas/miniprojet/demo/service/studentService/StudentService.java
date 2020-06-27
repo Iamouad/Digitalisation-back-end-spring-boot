@@ -12,7 +12,10 @@ public interface StudentService {
 
     List<Student> getStudents();
     Student getStudent(Long studentId);
+    Student getStudent(String mail);
     Student addStudent(Student student);
     void delStudent(Long studentId);
     Student updateStudent(Student student);
+    List<CertifRequest> myCertifications(Student student);
+
 }

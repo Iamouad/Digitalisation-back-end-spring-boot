@@ -18,7 +18,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import org.springframework.core.io.Resource;
-import sun.tools.java.ClassPath;
 
 @RestController
 @RequestMapping("/scholarity/files")

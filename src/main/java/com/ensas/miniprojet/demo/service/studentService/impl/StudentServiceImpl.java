@@ -22,6 +22,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @Transactional
     public CertifRequest addNewCertifRequest(CertifRequest certifRequest) {
+
         CertifRequest certifRequest1 = certifRepository.save(certifRequest);
         return certifRequest1;
     }
@@ -40,13 +41,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Student getStudent(String mail){return studentRepository.findByEmail(mail);}
+
+    @Override
     public Student addStudent(Student student) {
-        Student std = studentRepository.findByEmail(student.getEmail());
-        if(std == null){
-            student.setIdentification(new Identification(student.getEmail(),student.getEmail()));
-            return studentRepository.save(student);
-        }
-        return null;
+        return studentRepository.save(student);
     }
 
     @Override
@@ -57,6 +56,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student updateStudent(Student student) {
         return studentRepository.save(student);
+    }
+
+    @Override
+    public List<CertifRequest> myCertifications(Student student) {
+        return certifRepository.find(student);
     }
 }
 
